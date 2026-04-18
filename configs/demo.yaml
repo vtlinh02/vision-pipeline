@@ -1,0 +1,15 @@
+# Purpose: Flat YAML config parsed by the demo (simple key: value parser).
+
+imgsz: 640
+conf_thresh: 0.25
+iou_thresh: 0.45
+end2end: true
+
+intra_threads: 4
+inter_threads: 1
+
+warmup: 20
+repeat: 200
+
+write_json: true
+write_overlay: true

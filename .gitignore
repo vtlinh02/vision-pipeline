@@ -1,0 +1,5 @@
+third_party
+.venv
+models
+build
+plan
