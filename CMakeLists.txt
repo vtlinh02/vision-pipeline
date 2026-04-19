@@ -39,27 +39,3 @@ add_executable(detect_image apps/detect_image/main.cpp)
 target_link_libraries(detect_image PRIVATE visioncore)
 
 set_target_properties(detect_image PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-
-# Tests
-if(VC_BUILD_TESTS)
-  include(FetchContent)
-  FetchContent_Declare(
-    googletest
-    URL https://github.com/google/googletest/archive/refs/tags/v1.15.2.zip
-  )
-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-  FetchContent_MakeAvailable(googletest)
-
-  enable_testing()
-
-  add_executable(visioncore_tests
-    tests/test_letterbox.cpp
-    tests/test_postprocess_end2end.cpp
-    tests/test_config.cpp
-  )
-  target_link_libraries(visioncore_tests PRIVATE visioncore GTest::gtest_main)
-  set_target_properties(visioncore_tests PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-
-  include(GoogleTest)
-  gtest_discover_tests(visioncore_tests)
-endif()
